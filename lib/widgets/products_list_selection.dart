@@ -6,10 +6,11 @@ import '../providers/products_provider.dart';
 import 'products_selector.dart';
 
 class ProductsListSelection extends StatefulWidget {
-  List<Product> _products;
-  Function _updateProductsInList;
+  final List<Product> _products;
+  final Function _updateProductsInList;
 
-  ProductsListSelection(this._products, this._updateProductsInList);
+  const ProductsListSelection(this._products, this._updateProductsInList,
+      {super.key});
 
   @override
   State<ProductsListSelection> createState() => _ProductsListSelectionState();

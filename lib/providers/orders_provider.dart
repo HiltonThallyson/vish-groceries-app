@@ -50,16 +50,18 @@ class OrdersProvider extends ChangeNotifier {
           number: pedido.number,
           valor: pedido.valor,
           status: newStatus);
-      await FirebaseFirestore.instance
-          .collection("/orders")
-          .doc(pedido.id)
-          .update(newOrder.toJson());
-      OrderModel pedidoAntigo =
-          _orders.firstWhere(((elemento) => elemento.id == pedido.id));
-      _orders.remove(pedidoAntigo);
-      _finishedOrders.add(pedido);
-      pedido.status = newStatus;
-      notifyListeners();
+      if (user!.uid == pedido.creatorId) {
+        await FirebaseFirestore.instance
+            .collection("/orders")
+            .doc(pedido.id)
+            .update(newOrder.toJson());
+        OrderModel pedidoAntigo =
+            _orders.firstWhere(((elemento) => elemento.id == pedido.id));
+        _orders.remove(pedidoAntigo);
+        _finishedOrders.add(pedido);
+        pedido.status = newStatus;
+        notifyListeners();
+      }
     } catch (error) {
       rethrow;
     }
@@ -90,14 +92,16 @@ class OrdersProvider extends ChangeNotifier {
     var user = auth.currentUser;
 
     try {
-      await FirebaseFirestore.instance
-          .collection("/orders")
-          .doc(pedido.id)
-          .delete();
-      OrderModel pedidoRemove =
-          _finishedOrders.firstWhere((elemento) => elemento.id == pedido.id);
-      _finishedOrders.remove(pedidoRemove);
-      notifyListeners();
+      if (pedido.creatorId == user!.uid) {
+        await FirebaseFirestore.instance
+            .collection("/orders")
+            .doc(pedido.id)
+            .delete();
+        OrderModel pedidoRemove =
+            _finishedOrders.firstWhere((elemento) => elemento.id == pedido.id);
+        _finishedOrders.remove(pedidoRemove);
+        notifyListeners();
+      }
     } catch (error) {
       rethrow;
     }

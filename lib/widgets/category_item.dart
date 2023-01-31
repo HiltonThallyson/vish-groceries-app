@@ -1,13 +1,11 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import '../models/category.dart';
 
 class CategoryItem extends StatelessWidget {
-  Category category;
+  final Category category;
 
-  CategoryItem(this.category, {super.key});
+  const CategoryItem(this.category, {super.key});
   @override
   Widget build(BuildContext context) {
     return SizedBox(

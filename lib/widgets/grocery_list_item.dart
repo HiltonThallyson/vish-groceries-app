@@ -4,12 +4,11 @@ import 'package:provider/provider.dart';
 
 import '../models/grocery_list.dart';
 import '../providers/groceries_lists_provider.dart';
-import '../screens/list_details_screen.dart';
 
 class GroceryListItem extends StatelessWidget {
-  GroceryList groceryList;
+  final GroceryList groceryList;
 
-  GroceryListItem(this.groceryList);
+  const GroceryListItem(this.groceryList, {super.key});
 
   @override
   Widget build(BuildContext context) {

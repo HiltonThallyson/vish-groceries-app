@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import '../models/list_product.dart';
 
 class ListProductItem extends StatelessWidget {
-  ListProduct listProduct;
-  bool isEditing;
+  final ListProduct listProduct;
+  final bool isEditing;
 
-  ListProductItem(this.listProduct, this.isEditing);
+  ListProductItem(this.listProduct, this.isEditing, {super.key});
 
   final _quantityController = TextEditingController();
 

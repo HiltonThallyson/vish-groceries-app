@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
-import 'package:vish/data/products.dart';
 
 import '../models/product.dart';
 import '/providers/products_provider.dart';
@@ -12,6 +11,7 @@ class ProductsList extends StatelessWidget {
   String? searchFilter;
 
   ProductsList(this._isSearching, [this.searchFilter]);
+
   @override
   Widget build(BuildContext context) {
     List<Product> resultadoPesquisa = [];

@@ -17,10 +17,10 @@ class CartScreen extends StatelessWidget {
     var myCart = Provider.of<CartProvider>(context);
     var myOrder = Provider.of<OrdersProvider>(context);
     return Scaffold(
-      appBar: MyAppBar(title: "Meu carrinho"),
+      appBar: const MyAppBar(title: "Meu carrinho"),
       body: Column(
         children: [
-          Expanded(
+          const Expanded(
             child: CartList(),
           ),
           Container(

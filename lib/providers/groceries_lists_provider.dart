@@ -85,16 +85,18 @@ class GroceriesListsProvider extends ChangeNotifier {
     var user = auth.currentUser;
 
     try {
-      FirebaseFirestore.instance
-          .collection("grocerylists")
-          .doc(groceryList.id)
-          .delete();
-      if (groceryList.hasAutoPayment) {
-        _autoLists.remove(groceryList);
-      } else {
-        _manualLists.remove(groceryList);
+      if (groceryList.creatorId == user!.uid) {
+        FirebaseFirestore.instance
+            .collection("grocerylists")
+            .doc(groceryList.id)
+            .delete();
+        if (groceryList.hasAutoPayment) {
+          _autoLists.remove(groceryList);
+        } else {
+          _manualLists.remove(groceryList);
+        }
+        notifyListeners();
       }
-      notifyListeners();
     } catch (error) {
       rethrow;
     }

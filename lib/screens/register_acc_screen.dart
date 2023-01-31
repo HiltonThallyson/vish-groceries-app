@@ -2,20 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../providers/auth_provider.dart';
-import '../screens/login_screen.dart';
 
 class RegisterAccountScreen extends StatefulWidget {
+  const RegisterAccountScreen({super.key});
+
   @override
-  _RegisterAccountScreenState createState() => _RegisterAccountScreenState();
+  State<RegisterAccountScreen> createState() => _RegisterAccountScreenState();
 }
 
 class _RegisterAccountScreenState extends State<RegisterAccountScreen> {
   TextEditingController nameController = TextEditingController();
+
   TextEditingController emailController = TextEditingController();
+
   TextEditingController passwordController = TextEditingController();
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   bool _isObscure = true;
+
   bool? isChecked = false;
+
   bool loading = false;
 
   registrar() async {

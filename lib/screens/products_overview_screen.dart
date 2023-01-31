@@ -8,6 +8,8 @@ import '../widgets/products_list.dart';
 import '../widgets/search_input.dart';
 
 class ProductsOverviewScreen extends StatefulWidget {
+  const ProductsOverviewScreen({super.key});
+
   @override
   State<ProductsOverviewScreen> createState() => _ProductsOverviewScreenState();
 }
@@ -56,7 +58,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
             const SizedBox(
               height: 10,
             ),
-            CategoriesList(),
+            const CategoriesList(),
             const SizedBox(
               height: 25,
             ),

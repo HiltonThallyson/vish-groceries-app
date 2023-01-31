@@ -5,9 +5,9 @@ import '../models/product.dart';
 import '../providers/cart_provider.dart';
 
 class ProductItem extends StatelessWidget {
-  Product product;
+  final Product product;
 
-  ProductItem(this.product);
+  const ProductItem(this.product, {super.key});
 
   @override
   Widget build(BuildContext context) {

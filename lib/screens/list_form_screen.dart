@@ -21,17 +21,25 @@ class ListFormScreen extends StatefulWidget {
 
 class _ListFormScreenState extends State<ListFormScreen> {
   GroceryList? groceryList;
+
   final _nameController = TextEditingController();
+
   final _descriptionController = TextEditingController();
+
   final FocusNode _nameNode = FocusNode();
+
   final FocusNode _descriptionNode = FocusNode();
+
   bool _hasAutoPayment = false;
+
   DateTime? _autoPaymentDate = DateTime.now();
+
   List<ListProduct> _products = [];
+
   final _formKey = GlobalKey<FormState>();
 
   @override
-  void initialState() {
+  void initState() {
     super.initState();
     _nameController.text = '';
     _descriptionController.text = '';
@@ -68,18 +76,18 @@ class _ListFormScreenState extends State<ListFormScreen> {
     _descriptionNode.unfocus();
   }
 
-  void _updateProductQuantity(ListProduct listProduct) {
-    var updatedProducts = _products.map((product) {
-      if (product.product == listProduct.product) {
-        return listProduct;
-      } else {
-        return product;
-      }
-    }).toList();
-    setState(() {
-      _products = updatedProducts;
-    });
-  }
+  // void _updateProductQuantity(ListProduct listProduct) {
+  //   var updatedProducts = _products.map((product) {
+  //     if (product.product == listProduct.product) {
+  //       return listProduct;
+  //     } else {
+  //       return product;
+  //     }
+  //   }).toList();
+  //   setState(() {
+  //     _products = updatedProducts;
+  //   });
+  // }
 
   void _validateForm() {
     final isValid = _formKey.currentState!.validate();

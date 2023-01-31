@@ -7,6 +7,8 @@ import '../widgets/grocery_list_item.dart';
 import '../widgets/my_appbar.dart';
 
 class MyGroceriesListsScreen extends StatefulWidget {
+  const MyGroceriesListsScreen({super.key});
+
   @override
   State<MyGroceriesListsScreen> createState() => _MyGroceriesListsScreenState();
 }

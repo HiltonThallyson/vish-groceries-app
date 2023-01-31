@@ -6,6 +6,8 @@ import '../data/categories.dart';
 import 'category_item.dart';
 
 class CategoriesList extends StatelessWidget {
+  const CategoriesList({super.key});
+
   @override
   Widget build(BuildContext context) {
     var categoryFilter = context.read<ProductsProvider>();

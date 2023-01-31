@@ -2,12 +2,11 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../data/carts.dart';
 import '../models/cart_product.dart';
 import '../models/product.dart';
 
 class CartProvider extends ChangeNotifier {
-  final List<CartProduct> _cartProducts = carts;
+  final List<CartProduct> _cartProducts = [];
 
   List<CartProduct> get cartProducts => _cartProducts;
 
@@ -25,7 +24,7 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void clear(){
+  void clear() {
     _cartProducts.clear();
     notifyListeners();
   }

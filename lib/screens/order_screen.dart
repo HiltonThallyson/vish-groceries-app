@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../navigation/my_drawer.dart';
 import '../widgets/orders_list.dart';
-import '../widgets/finishedOrders_list.dart';
+import '../widgets/finished_orders_list.dart';
 import '../providers/orders_provider.dart';
 
 class OrderScreen extends StatefulWidget {
@@ -22,8 +22,6 @@ class _OrderScreenState extends State<OrderScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var myOrder = Provider.of<OrdersProvider>(context);
-
     return DefaultTabController(
       initialIndex: 0,
       length: 2,
@@ -57,7 +55,7 @@ class _OrderScreenState extends State<OrderScreen> {
             ),
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: <Widget>[
             Center(
               child: OrderList(),

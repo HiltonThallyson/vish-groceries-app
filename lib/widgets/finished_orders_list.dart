@@ -5,6 +5,8 @@ import '../providers/orders_provider.dart';
 import 'finished_order_item.dart';
 
 class FinishedOrderList extends StatelessWidget {
+  const FinishedOrderList({super.key});
+
   @override
   Widget build(BuildContext context) {
     var orderProvider = context.watch<OrdersProvider>();

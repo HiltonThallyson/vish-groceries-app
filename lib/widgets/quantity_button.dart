@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class QuantityButton extends StatefulWidget {
-  Function _changeQuantity;
+  final Function _changeQuantity;
   int _quantity;
 
-  QuantityButton(this._quantity, this._changeQuantity);
+  QuantityButton(this._quantity, this._changeQuantity, {super.key});
 
   @override
   State<QuantityButton> createState() => _QuantityButtonState();
@@ -25,7 +25,7 @@ class _QuantityButtonState extends State<QuantityButton> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 100,
       height: 46,
       child: Row(

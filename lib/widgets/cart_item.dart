@@ -6,14 +6,15 @@ import '../models/cart_product.dart';
 import 'quantity_button.dart';
 
 class CartItem extends StatefulWidget {
-  CartProduct cartItem;
+  final CartProduct cartItem;
 
-  CartItem(this.cartItem);
+  const CartItem(this.cartItem, {super.key});
 
-  CartState createState() => CartState();
+  @override
+  State<CartItem> createState() => _CartItemState();
 }
 
-class CartState extends State<CartItem> {
+class _CartItemState extends State<CartItem> {
   late CartProvider myCart;
 
   @override
@@ -81,7 +82,8 @@ class CartState extends State<CartItem> {
                     IconButton(
                         onPressed: () {
                           setState(() {
-                            myCart.removeProductFromCart(widget.cartItem.product);
+                            myCart
+                                .removeProductFromCart(widget.cartItem.product);
                           });
                         },
                         icon: const Icon(Icons.close),

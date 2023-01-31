@@ -6,16 +6,18 @@ import 'package:vish/providers/orders_provider.dart';
 import '../models/order.dart';
 
 class OrderItem extends StatefulWidget {
-  OrderModel order;
+  final OrderModel order;
 
-  OrderItem(this.order);
+  const OrderItem(this.order, {super.key});
 
-  OrderState createState() => OrderState();
+  @override
+  State<OrderItem> createState() => _OrderItemState();
 }
 
-class OrderState extends State<OrderItem> {
+class _OrderItemState extends State<OrderItem> {
   late OrdersProvider myOrder =
       Provider.of<OrdersProvider>(context, listen: false);
+
   DateTime data = DateTime.now();
 
   @override

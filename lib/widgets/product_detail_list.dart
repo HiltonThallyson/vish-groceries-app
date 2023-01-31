@@ -7,14 +7,14 @@ class ProductDetailList extends StatefulWidget {
   final Product product;
   final Function changeQuantity;
 
-  ProductDetailList(this.product, this.changeQuantity);
+  const ProductDetailList(this.product, this.changeQuantity, {super.key});
 
   @override
   State<ProductDetailList> createState() => _ProductDetailListState();
 }
 
 class _ProductDetailListState extends State<ProductDetailList> {
-  late final rating;
+  late final int rating;
   int _quantity = 1;
 
   @override

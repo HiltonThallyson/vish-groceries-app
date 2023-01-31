@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vish/models/onboarding_content.dart';
-import 'package:vish/screens/login_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({super.key});
+
   @override
-  _OnboardingScreenState createState() => _OnboardingScreenState();
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   int currentIndex = 0;
+
   late PageController _controller;
 
   @override
@@ -116,7 +117,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 foregroundColor: Colors.white,
                 textStyle: const TextStyle(
                   fontSize: 20,
-                  color: const Color.fromARGB(255, 254, 137, 57),
+                  color: Color.fromARGB(255, 254, 137, 57),
                 ),
               ),
               child: Text(

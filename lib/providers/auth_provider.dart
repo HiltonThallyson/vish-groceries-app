@@ -59,7 +59,7 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  Future<UserCredential?> login(String email, String password) async {
+  Future<void> login(String email, String password) async {
     try {
       await _auth
           .signInWithEmailAndPassword(email: email, password: password)

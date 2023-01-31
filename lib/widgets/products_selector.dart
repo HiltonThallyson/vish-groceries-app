@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import '../models/product.dart';
 
 class ProductsSelector extends StatefulWidget {
-  List<Product> _products;
-  List<Product> _selectedProducts;
-  Function _addSelectedProductsToList;
+  final List<Product> _products;
+  final List<Product> _selectedProducts;
+  final Function _addSelectedProductsToList;
 
-  ProductsSelector(
-      this._products, this._selectedProducts, this._addSelectedProductsToList);
+  const ProductsSelector(
+      this._products, this._selectedProducts, this._addSelectedProductsToList,
+      {super.key});
 
   @override
   State<ProductsSelector> createState() => _ProductsSelectorState();

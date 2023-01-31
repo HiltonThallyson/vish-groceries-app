@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'configs/config.dart';
-import 'firebase_options.dart';
 
 import 'providers/auth_provider.dart';
 import 'screens/check_auth.dart';
@@ -38,9 +36,9 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  bool? isFirstTime;
+  final bool? isFirstTime;
 
-  MyApp(this.isFirstTime);
+  const MyApp(this.isFirstTime, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -81,19 +79,19 @@ class MyApp extends StatelessWidget {
                   headline1: TextStyle(
                       fontSize: 12, fontFamily: "Acme", color: Colors.grey))),
           routes: {
-            "/onboarding-screen": ((context) => OnboardingScreen()),
-            "/login-screen": (context) => LoginScreen(),
-            "/register-screen": (context) => RegisterAccountScreen(),
+            "/onboarding-screen": ((context) => const OnboardingScreen()),
+            "/login-screen": (context) => const LoginScreen(),
+            "/register-screen": (context) => const RegisterAccountScreen(),
             "/home-screen": (context) => const HomeScreen(),
             "/search-results": (context) => const SearchResultsScreen(),
-            "/categorias": (context) => CategoriesScreen(),
+            "/categorias": (context) => const CategoriesScreen(),
             "/categoria-produtos": (context) => const CategoryProductsScreen(),
             "/detalhe-produto": (context) => const ProductDetailScreen(),
             "/lista-form": (context) => const ListFormScreen(),
             "/lista-detalhes": (context) => const ListDetailsScreen(),
             "/order-screen": (context) => const OrderScreen(),
             "/cart-screen": (context) => const CartScreen(),
-            "/check-auth-screen": (context) => CheckAuth()
+            "/check-auth-screen": (context) => const CheckAuth()
           },
         ));
   }

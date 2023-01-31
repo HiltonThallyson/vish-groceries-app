@@ -6,6 +6,8 @@ import 'home_screen.dart';
 import 'login_screen.dart';
 
 class CheckAuth extends StatefulWidget {
+  const CheckAuth({super.key});
+
   @override
   State<CheckAuth> createState() => _CheckAuthState();
 }
@@ -15,6 +17,6 @@ class _CheckAuthState extends State<CheckAuth> {
   Widget build(BuildContext context) {
     AuthProvider auth = Provider.of<AuthProvider>(context);
 
-    return auth.user != null ? const HomeScreen() : LoginScreen();
+    return auth.user != null ? const HomeScreen() : const LoginScreen();
   }
 }
