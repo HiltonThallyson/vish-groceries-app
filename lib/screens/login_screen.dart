@@ -16,7 +16,7 @@ class LoginScreenState extends State<LoginScreen> {
   TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _isObscure = true;
-  bool? isChecked = false;
+
   bool loading = false;
 
   @override
@@ -39,7 +39,6 @@ class LoginScreenState extends State<LoginScreen> {
           .login(emailController.text, passwordController.text)
           .then((_) {
         if (Provider.of<AuthProvider>(context, listen: false).user != null) {
-          _saveLoginInfo();
           Navigator.of(context).pushReplacementNamed("/home-screen");
         }
       });
@@ -48,12 +47,6 @@ class LoginScreenState extends State<LoginScreen> {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.message)));
     }
-  }
-
-  void _saveLoginInfo() async {
-    final prefs = await SharedPreferences.getInstance();
-
-    prefs.setBool("loggedIn", true);
   }
 
   @override
@@ -72,7 +65,7 @@ class LoginScreenState extends State<LoginScreen> {
                 height: 350.0,
               ),
               const Padding(
-                padding: EdgeInsets.only(bottom: 40.0, left: 15.0),
+                padding: EdgeInsets.only(bottom: 0, left: 15.0),
                 child: Text(
                   "Seja Bem Vindo!",
                   textAlign: TextAlign.start,
@@ -82,9 +75,11 @@ class LoginScreenState extends State<LoginScreen> {
                       fontWeight: FontWeight.bold),
                 ),
               ),
+              const SizedBox(
+                height: 20,
+              ),
               Padding(
-                padding: const EdgeInsets.only(
-                    bottom: 35.0, left: 15.0, right: 15.0),
+                padding: const EdgeInsets.only(left: 15.0, right: 15.0),
                 child: TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
@@ -124,6 +119,9 @@ class LoginScreenState extends State<LoginScreen> {
                     }
                   },
                 ),
+              ),
+              const SizedBox(
+                height: 15,
               ),
               Padding(
                 padding: const EdgeInsets.only(
@@ -206,22 +204,6 @@ class LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20.0),
-                child: CheckboxListTile(
-                    title: const Text(
-                      "Continuar conectado",
-                      style: TextStyle(color: Colors.black54),
-                    ),
-                    value: isChecked,
-                    activeColor: const Color.fromARGB(255, 250, 102, 46),
-                    controlAffinity: ListTileControlAffinity.leading,
-                    onChanged: (newBool) {
-                      setState(() {
-                        isChecked = newBool;
-                      });
-                    }),
-              ),
               const Padding(
                 padding: EdgeInsets.only(bottom: 20.0),
                 child: Text(
@@ -234,6 +216,9 @@ class LoginScreenState extends State<LoginScreen> {
                     decoration: TextDecoration.underline,
                   ),
                 ),
+              ),
+              const SizedBox(
+                height: 30,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

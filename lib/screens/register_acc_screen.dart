@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../providers/auth_provider.dart';
 
 class RegisterAccountScreen extends StatefulWidget {
@@ -34,7 +33,6 @@ class _RegisterAccountScreenState extends State<RegisterAccountScreen> {
               nameController.text)
           .then((_) {
         if (Provider.of<AuthProvider>(context, listen: false).user != null) {
-          _saveLoginInfo();
           Navigator.of(context).pushReplacementNamed("/home-screen");
         }
       });
@@ -43,12 +41,6 @@ class _RegisterAccountScreenState extends State<RegisterAccountScreen> {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.message)));
     }
-  }
-
-  void _saveLoginInfo() async {
-    final prefs = await SharedPreferences.getInstance();
-
-    prefs.setBool("loggedIn", true);
   }
 
   @override
@@ -67,7 +59,7 @@ class _RegisterAccountScreenState extends State<RegisterAccountScreen> {
                 height: 330.0,
               ),
               const Padding(
-                padding: EdgeInsets.only(bottom: 30.0, left: 15.0),
+                padding: EdgeInsets.only(left: 15.0),
                 child: SizedBox(
                   child: Text(
                     "Crie sua conta",
@@ -79,9 +71,11 @@ class _RegisterAccountScreenState extends State<RegisterAccountScreen> {
                   ),
                 ),
               ),
+              const SizedBox(
+                height: 20,
+              ),
               Padding(
-                padding: const EdgeInsets.only(
-                    bottom: 30.0, left: 15.0, right: 15.0),
+                padding: const EdgeInsets.only(left: 15.0, right: 15.0),
                 child: TextFormField(
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
@@ -123,9 +117,11 @@ class _RegisterAccountScreenState extends State<RegisterAccountScreen> {
                   },
                 ),
               ),
+              const SizedBox(
+                height: 15,
+              ),
               Padding(
-                padding: const EdgeInsets.only(
-                    bottom: 30.0, left: 15.0, right: 15.0),
+                padding: const EdgeInsets.only(left: 15.0, right: 15.0),
                 child: TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
@@ -167,9 +163,11 @@ class _RegisterAccountScreenState extends State<RegisterAccountScreen> {
                   },
                 ),
               ),
+              const SizedBox(
+                height: 15,
+              ),
               Padding(
-                padding: const EdgeInsets.only(
-                    bottom: 30.0, left: 15.0, right: 15.0),
+                padding: const EdgeInsets.only(left: 15.0, right: 15.0),
                 child: TextFormField(
                   keyboardType: TextInputType.visiblePassword,
                   obscureText: _isObscure,
@@ -221,6 +219,9 @@ class _RegisterAccountScreenState extends State<RegisterAccountScreen> {
                     }
                   },
                 ),
+              ),
+              const SizedBox(
+                height: 15,
               ),
               Padding(
                 padding: const EdgeInsets.only(
