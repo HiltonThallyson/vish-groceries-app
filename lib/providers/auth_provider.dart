@@ -45,8 +45,7 @@ class AuthProvider extends ChangeNotifier {
         await FirebaseAuth.instance.setLanguageCode("pt-BR");
         await user?.sendEmailVerification();
         await user?.updateDisplayName(username);
-        await user?.reload().then((_) => _user = _auth.currentUser);
-        notifyListeners();
+        await user?.reload().then((_) => _getUser());
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
